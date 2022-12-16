@@ -34,7 +34,7 @@ class ORTEncoder(torch.nn.Module):
         self.main_input_name = "pixel_values"
         self._device = device
         self.session = onnxrt.InferenceSession(
-            "model_trocr_base/encoder_model.onnx", providers=["CPUExecutionProvider"]
+            "/home/forest/Desktop/trOcr-onnx/ocr_model/encoder_model.onnx", providers=["CPUExecutionProvider"]
         )
         self.input_names = {input_key.name: idx for idx, input_key in enumerate(self.session.get_inputs())}
         self.output_names = {output_key.name: idx for idx, output_key in enumerate(self.session.get_outputs())}
@@ -60,7 +60,7 @@ class ORTDecoder(torch.nn.Module):
         self._device = device
 
         self.session = onnxrt.InferenceSession(
-            "model_trocr_base/decoder_model.onnx", providers=["CPUExecutionProvider"]
+            "/home/forest/Desktop/trOcr-onnx/ocr_model/decoder_model.onnx", providers=["CPUExecutionProvider"]
         )
 
         self.input_names = {input_key.name: idx for idx, input_key in enumerate(self.session.get_inputs())}
